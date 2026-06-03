@@ -1,0 +1,143 @@
+---
+// src/components/Advantages.astro
+const advantages = [
+  { title: "Acceso desde cualquier dispositivo", desc: "Funciona en computadora, tablet y celular. Solo necesitas un navegador." },
+  { title: "Sin instalaciones ni mantenimiento", desc: "Todo está en la nube. Las actualizaciones son automáticas y sin interrupciones." },
+  { title: "Seguridad con autenticación JWT", desc: "Cada usuario tiene credenciales únicas. Los datos están protegidos en todo momento." },
+  { title: "Decisiones basadas en datos", desc: "El dashboard te muestra qué productos vender más y cuándo son los picos de venta." }
+];
+---
+
+<section class="advantages" id="ventajas">
+  <div class="container">
+    <div class="advantages-inner">
+      <div class="fade-up">
+        <div class="section-tag">💡 Ventajas</div>
+        <h2 class="section-title">¿Por qué usar este sistema?</h2>
+        <p class="section-sub">Diseñado para simplificar la operación diaria sin necesidad de conocimientos técnicos.</p>
+        
+        <div class="advantages-list">
+          {advantages.map(adv => (
+            <div class="advantage-item">
+              <div class="advantage-check">
+                <span class="material-icons">check</span>
+              </div>
+              <div>
+                <h4>{adv.title}</h4>
+                <p>{adv.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Mockup Visual -->
+      <div class="advantages-visual fade-up">
+        <div class="mock-header">
+          <div class="mock-dot" style="background:#ef5350"></div>
+          <div class="mock-dot" style="background:#ffca28; margin-left:6px"></div>
+          <div class="mock-dot" style="background:#66bb6a; margin-left:6px"></div>
+          <span class="mock-title">🌿 Historial de Ventas</span>
+        </div>
+        <div class="mock-row">
+          <span class="mock-row-label">Venta #0001 — Tarquino</span>
+          <span class="mock-badge badge-green">PAGADO</span>
+        </div>
+        <div class="mock-row">
+          <span class="mock-row-label">Venta #0002 — Laura Quispe</span>
+          <span class="mock-badge badge-orange">ABONADO</span>
+        </div>
+        <div class="mock-row">
+          <span class="mock-row-label">Venta #0003 — Consumidor Final</span>
+          <span class="mock-badge badge-green">PAGADO</span>
+        </div>
+        <div class="mock-row">
+          <span class="mock-row-label">Venta #0004 — Geovanny Pillajo</span>
+          <span class="mock-badge badge-blue">DEUDA</span>
+        </div>
+        <div class="mock-total">
+          <span>Ingresos totales</span>
+          <strong>$1,046.80</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  section { padding: 5rem 2rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-tag {
+    display: inline-block;
+    background: var(--green-pale); color: var(--green-main);
+    font-size: .78rem; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase; padding: .35rem .9rem;
+    border-radius: 50px; margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700; color: var(--green-dark);
+    line-height: 1.2; margin-bottom: 1rem;
+  }
+  .section-sub {
+    font-size: 1.05rem; color: var(--text-muted);
+    max-width: 540px; line-height: 1.7;
+  }
+  .advantages { background: var(--green-pale); }
+  .advantages-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+  }
+  @media (max-width: 768px) { .advantages-inner { grid-template-columns: 1fr; gap: 2rem; } }
+
+  .advantages-list { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+  .advantage-item { display: flex; gap: 1rem; align-items: flex-start; }
+  .advantage-check {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--green-main); color: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 1rem;
+  }
+  .advantage-check .material-icons { font-size: 1.1rem; }
+  .advantage-item h4 { font-size: 1rem; font-weight: 600; color: var(--green-dark); margin-bottom: .25rem; }
+  .advantage-item p { font-size: .9rem; color: var(--text-muted); line-height: 1.5; }
+
+  .advantages-visual {
+    background: var(--white);
+    border-radius: 20px; padding: 2rem;
+    box-shadow: 0 8px 32px rgba(46,125,50,.1);
+    border: 1px solid var(--border);
+  }
+  .mock-header {
+    display: flex; align-items: center; gap: .8rem;
+    padding-bottom: 1rem; border-bottom: 1px solid var(--border);
+    margin-bottom: 1.5rem;
+  }
+  .mock-dot { width: 12px; height: 12px; border-radius: 50%; }
+  .mock-title { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--green-dark); font-size: 1rem; margin-left: .3rem; }
+  .mock-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: .7rem .8rem; border-radius: 8px; margin-bottom: .5rem;
+    background: var(--green-mist);
+  }
+  .mock-row-label { font-size: .85rem; color: var(--text-muted); font-weight: 500; }
+  .mock-badge {
+    font-size: .75rem; font-weight: 700; padding: .25rem .7rem;
+    border-radius: 50px;
+  }
+  .badge-green  { background: #e8f5e9; color: #2e7d32; }
+  .badge-orange { background: #fff3e0; color: #e65100; }
+  .badge-blue   { background: #e3f2fd; color: #1565c0; }
+  .mock-total {
+    margin-top: 1rem; padding: .8rem;
+    background: var(--green-main); border-radius: 10px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .mock-total span { color: var(--white); font-weight: 600; font-size: .9rem; }
+  .mock-total strong { color: var(--white); font-size: 1.2rem; font-family: 'Playfair Display', serif; }
+  
+  @media (max-width: 600px) {
+    section { padding: 3.5rem 1.2rem; }
+  }
+</style>

@@ -1,0 +1,119 @@
+---
+// src/components/Roles.astro
+const roles = [
+  {
+    emoji: "👑",
+    name: "Administrador",
+    desc: "Acceso completo al sistema. Gestiona usuarios, configura el negocio y ve todas las estadísticas.",
+    perms: [
+      { allowed: true, text: "Dashboard y estadísticas" },
+      { allowed: true, text: "Ventas, productos y clientes" },
+      { allowed: true, text: "Gestión de usuarios" }
+    ]
+  },
+  {
+    emoji: "👤",
+    name: "Usuario",
+    desc: "Acceso operativo completo excepto la gestión de usuarios del sistema.",
+    perms: [
+      { allowed: true, text: "Dashboard y estadísticas" },
+      { allowed: true, text: "Ventas, productos y clientes" },
+      { allowed: false, text: "Gestión de usuarios" }
+    ]
+  },
+  {
+    emoji: "🧑‍💼",
+    name: "Empleado",
+    desc: "Acceso exclusivo al módulo de ventas. Ideal para cajeros o vendedores en el punto de venta.",
+    perms: [
+      { allowed: true, text: "Registrar y ver ventas" },
+      { allowed: false, text: "Productos y clientes" },
+      { allowed: false, text: "Dashboard y usuarios" }
+    ]
+  }
+];
+---
+
+<section class="roles" id="roles">
+  <div class="container">
+    <div class="roles-header fade-up">
+      <div class="section-tag">👤 Roles</div>
+      <h2 class="section-title">Cada usuario en su lugar</h2>
+      <p class="section-sub">Control granular de permisos para proteger la información sensible del negocio.</p>
+    </div>
+    <div class="roles-grid">
+      {roles.map(role => (
+        <div class="role-card fade-up">
+          <div class="role-emoji">{role.emoji}</div>
+          <h3>{role.name}</h3>
+          <p>{role.desc}</p>
+          <div class="role-perms">
+            {role.perms.map(perm => (
+              <div class="perm">
+                <span class="material-icons">
+                  {perm.allowed ? "check_circle" : "cancel"}
+                </span>
+                {perm.text}
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  section { padding: 5rem 2rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-tag {
+    display: inline-block;
+    background: var(--green-pale); color: var(--green-main);
+    font-size: .78rem; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase; padding: .35rem .9rem;
+    border-radius: 50px; margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700; color: var(--green-dark);
+    line-height: 1.2; margin-bottom: 1rem;
+  }
+  .section-sub {
+    font-size: 1.05rem; color: var(--text-muted);
+    max-width: 540px; line-height: 1.7;
+  }
+  .roles { background: var(--green-dark); }
+  .roles-header { text-align: center; margin-bottom: 3rem; }
+  .roles-header .section-tag { background: rgba(255,255,255,.15); color: var(--white); }
+  .roles-header .section-title { color: var(--white); }
+  .roles-header .section-sub { color: rgba(255,255,255,.7); margin: 0 auto; }
+
+  .roles-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .role-card {
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 16px; padding: 2rem;
+    transition: background .2s;
+  }
+  .role-card:hover { background: rgba(255,255,255,.12); }
+  .role-emoji { font-size: 2.5rem; margin-bottom: 1rem; }
+  .role-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: .5rem; }
+  .role-card p { font-size: .9rem; color: rgba(255,255,255,.65); line-height: 1.6; margin-bottom: 1rem; }
+  .role-perms { display: flex; flex-direction: column; gap: .4rem; }
+  .perm {
+    display: flex; align-items: center; gap: .5rem;
+    font-size: .82rem; color: rgba(255,255,255,.8);
+  }
+  /* Manejo dinámico de colores de iconos por CSS nativo basado en el icono inyectado */
+  .perm .material-icons { font-size: 1rem; }
+  .perm:has([textContent="check_circle"]) .material-icons { color: var(--accent); }
+  .perm:has([textContent="cancel"]) .material-icons { color: #ef5350; }
+
+  @media (max-width: 600px) {
+    section { padding: 3.5rem 1.2rem; }
+  }
+</style>

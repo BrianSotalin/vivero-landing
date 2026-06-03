@@ -1,0 +1,166 @@
+---
+// src/components/Hero.astro
+const stats = [
+  { number: "3", label: "Roles de usuario" },
+  { number: "5", label: "Módulos de gestión" },
+  { number: "100%", label: "En la nube" }
+];
+---
+
+<section class="hero">
+  <div class="hero-leaves">
+    <div class="leaf">🌿</div>
+    <div class="leaf">🍃</div>
+    <div class="leaf">🌱</div>
+    <div class="leaf">🍀</div>
+    <div class="leaf">🌿</div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="dot"></div>
+      Sistema activo en producción
+    </div>
+    <h1>Gestiona tu vivero<br/>con <em>tecnología</em></h1>
+    <p>Plataforma web completa para el control de inventario, ventas, clientes y estadísticas de tu vivero. Simple, rápido y desde cualquier dispositivo.</p>
+    <div class="hero-actions">
+      <a href="https://viveros-ecuador.devxsota.cloud" class="btn-primary">
+        <span class="material-icons">rocket_launch</span>
+        Entrar al Sistema
+      </a>
+      <a href="#caracteristicas" class="btn-secondary">
+        <span class="material-icons">info</span>
+        Ver características
+      </a>
+    </div>
+    <div class="hero-stats">
+      {stats.map(stat => (
+        <div class="stat">
+          <div class="stat-number">{stat.number}</div>
+          <div class="stat-label">{stat.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(160deg, var(--green-mist) 0%, var(--green-pale) 60%, #d0ecd0 100%);
+    position: relative;
+    overflow: hidden;
+    padding: 7rem 2rem 4rem;
+    text-align: center;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 20%, rgba(46,125,50,.08) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(139,195,74,.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-leaves {
+    position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+  }
+  .leaf {
+    position: absolute; font-size: 2.5rem; opacity: .12;
+    animation: floatLeaf 8s ease-in-out infinite;
+  }
+  .leaf:nth-child(1)  { top: 10%; left:  8%; animation-delay: 0s;   font-size: 3rem; }
+  .leaf:nth-child(2)  { top: 20%; right: 6%; animation-delay: 1.5s; font-size: 2rem; }
+  .leaf:nth-child(3)  { top: 60%; left:  4%; animation-delay: 3s;   font-size: 3.5rem; }
+  .leaf:nth-child(4)  { top: 70%; right: 8%; animation-delay: 2s;   font-size: 2.5rem; }
+  .leaf:nth-child(5)  { top: 40%; left: 92%; animation-delay: 4s;   font-size: 2rem; }
+
+  @keyframes floatLeaf {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50%       { transform: translateY(-18px) rotate(8deg); }
+  }
+
+  .hero-content { position: relative; max-width: 760px; }
+  
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 50px; padding: .4rem 1rem;
+    font-size: .8rem; font-weight: 600; color: var(--green-main);
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px rgba(46,125,50,.1);
+  }
+  .hero-badge .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px rgba(139,195,74,.3);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(139,195,74,.3); }
+    50%       { box-shadow: 0 0 0 6px rgba(139,195,74,.1); }
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-weight: 900; line-height: 1.1;
+    color: var(--green-dark);
+    margin-bottom: 1.2rem;
+  }
+  h1 em {
+    font-style: normal; color: var(--green-main);
+    position: relative;
+  }
+  h1 em::after {
+    content: '';
+    position: absolute; bottom: -4px; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--green-light));
+    border-radius: 2px;
+  }
+  p {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: var(--text-muted); line-height: 1.7;
+    max-width: 560px; margin: 0 auto 2.5rem;
+  }
+  .hero-actions {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--green-main); color: var(--white);
+    padding: .85rem 2rem; border-radius: 10px;
+    text-decoration: none; font-weight: 600; font-size: 1rem;
+    display: inline-flex; align-items: center; gap: .5rem;
+    transition: background .2s, transform .15s, box-shadow .2s;
+    box-shadow: 0 4px 16px rgba(46,125,50,.3);
+  }
+  .btn-primary:hover { background: var(--green-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(46,125,50,.35); }
+  
+  .btn-secondary {
+    background: var(--white); color: var(--green-main);
+    border: 2px solid var(--green-main);
+    padding: .85rem 2rem; border-radius: 10px;
+    text-decoration: none; font-weight: 600; font-size: 1rem;
+    display: inline-flex; align-items: center; gap: .5rem;
+    transition: all .2s;
+  }
+  .btn-secondary:hover { background: var(--green-pale); transform: translateY(-2px); }
+  .btn-primary .material-icons, .btn-secondary .material-icons { font-size: 1.1rem; }
+
+  .hero-stats {
+    display: flex; justify-content: center; gap: 3rem;
+    margin-top: 4rem; flex-wrap: wrap;
+  }
+  .stat { text-align: center; }
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; font-weight: 900; color: var(--green-main);
+    line-height: 1;
+  }
+  .stat-label { font-size: .85rem; color: var(--text-muted); margin-top: .3rem; }
+
+  @media (max-width: 600px) {
+    .hero-stats { gap: 1.5rem; }
+  }
+</style>

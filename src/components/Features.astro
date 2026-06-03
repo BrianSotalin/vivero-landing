@@ -1,0 +1,89 @@
+---
+const features = [
+  { icon: "🛒", title: "Punto de Venta", desc: "Registra ventas con carrito de compras, selección de cliente, estado de pago (pagado, deuda, abonado) y generación de comprobante PDF." },
+  { icon: "📦", title: "Inventario de Productos", desc: "Controla plantas e insumos con categorías, precios de compra y venta. Búsqueda instantánea y edición rápida." },
+  { icon: "👥", title: "Directorio de Clientes", desc: "Gestiona clientes con nombre, teléfono y correo. Historial de compras y deudas por cliente." },
+  { icon: "📊", title: "Dashboard con Estadísticas", desc: "Visualiza ingresos totales, ventas por mes y top 5 productos más vendidos con gráficos interactivos en tiempo real." },
+  { icon: "🔐", title: "Control de Acceso por Roles", desc: "Tres niveles de acceso: Administrador, Usuario y Empleado. Cada rol ve solo lo que necesita." },
+  { icon: "📄", title: "Comprobantes en PDF", desc: "Genera y descarga el detalle de cada venta en PDF directamente desde el sistema." }
+];
+---
+
+<section class="features" id="caracteristicas">
+  <div class="container">
+    <div class="features-header fade-up">
+      <div class="section-tag">✨ Características</div>
+      <h2 class="section-title">Todo lo que necesita tu vivero</h2>
+      <p class="section-sub">Cada módulo fue diseñado pensando en las necesidades reales de un negocio de plantas.</p>
+    </div>
+    <div class="features-grid">
+      {features.map((item) => (
+        <div class="feature-card fade-up">
+          <div class="feature-icon">{item.icon}</div>
+          <h3>{item.title}</h3>
+          <p>{item.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Pega aquí exclusivamente los estilos pertenecientes a .features, .features-grid, .feature-card, etc. */
+  section { padding: 5rem 2rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-tag {
+    display: inline-block;
+    background: var(--green-pale); color: var(--green-main);
+    font-size: .78rem; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase; padding: .35rem .9rem;
+    border-radius: 50px; margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700; color: var(--green-dark);
+    line-height: 1.2; margin-bottom: 1rem;
+  }
+  .section-sub {
+    font-size: 1.05rem; color: var(--text-muted);
+    max-width: 540px; line-height: 1.7;
+  }
+  .features { background: var(--white); }
+  .features-header { text-align: center; margin-bottom: 3.5rem; }
+  .features-header .section-sub { margin: 0 auto; }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .feature-card {
+    background: var(--green-mist);
+    border: 1px solid var(--border);
+    border-radius: 16px; padding: 2rem;
+    transition: transform .2s, box-shadow .2s;
+    position: relative; overflow: hidden;
+  }
+  .feature-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--green-main), var(--accent));
+  }
+  .feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(46,125,50,.12); }
+  .feature-icon {
+    font-size: 2rem; margin-bottom: 1rem;
+    width: 56px; height: 56px;
+    background: var(--white); border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 8px rgba(46,125,50,.12);
+  }
+  .feature-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; color: var(--green-dark);
+    margin-bottom: .6rem;
+  }
+  .feature-card p { font-size: .95rem; color: var(--text-muted); line-height: 1.6; }
+  @media (max-width: 600px) {
+    section { padding: 3.5rem 1.2rem; }
+  }
+</style>
