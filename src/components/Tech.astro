@@ -1,32 +1,36 @@
 ---
 // src/components/Tech.astro
 const stack = [
-  { emoji: "☕", name: "Spring Boot 4" },
-  { emoji: "🔴", name: "Angular 21" },
-  { emoji: "🐘", name: "PostgreSQL 15" },
-  { emoji: "🐳", name: "Docker" },
-  { emoji: "🔒", name: "JWT + Spring Security" },
-  { emoji: "🎨", name: "PrimeNG 21" },
-  { emoji: "📈", name: "Chart.js" },
-  { emoji: "🌐", name: "Nginx" },
-  { emoji: "🔁", name: "GitHub Actions CI/CD" },
-  { emoji: "📄", name: "OpenAPI / Swagger" },
-  { emoji: "☁️", name: "VPS Hostinger" },
-  { emoji: "🔐", name: "SSL / HTTPS" }
+  { icon: "code", name: "Spring Boot 4" },                   // ☕ -> Code
+  { icon: "layers", name: "Angular 21" },                    // 🔴 -> Layers
+  { icon: "storage", name: "PostgreSQL 15" },                // 🐘 -> Storage
+  { icon: "token", name: "Docker" },                        // 🐳 -> Token
+  { icon: "admin_panel_settings", name: "JWT + Security" },  // 🔒 -> Admin Panel
+  { icon: "palette", name: "PrimeNG 21" },                   // 🎨 -> Palette
+  { icon: "analytics", name: "Chart.js" },                  // 📈 -> Analytics
+  { icon: "language", name: "Nginx" },                       // 🌐 -> Language
+  { icon: "sync_alt", name: "GitHub Actions CI/CD" },        // 🔁 -> Sync Alt
+  { icon: "description", name: "OpenAPI / Swagger" },        // 📄 -> Description
+  { icon: "cloud_queue", name: "VPS Hostinger" },            // ☁️ -> Cloud Queue
+  { icon: "https", name: "SSL / HTTPS" }                     // 🔐 -> Https
 ];
 ---
 
 <section class="tech" id="tecnologias">
   <div class="container">
     <div class="tech-header fade-up">
-      <div class="section-tag">⚙️ Tecnologías</div>
+      <div class="section-tag">
+        <span class="material-icons tag-icon">construction</span> Tecnologías
+      </div>
       <h2 class="section-title">Construido con tecnología moderna</h2>
       <p class="section-sub">Stack profesional, probado en producción y desplegado en la nube.</p>
     </div>
-    <div class="tech-grid fade-up">
+    <div class="tech-grid">
       {stack.map(tech => (
-        <div class="tech-chip">
-          <span class="emoji">{tech.emoji}</span> {tech.name}
+        <div class="tech-chip fade-up">
+          {/* 👇 Renderizado del icono de Material Icons 👇 */}
+          <span class="material-icons tech-icon">{tech.icon}</span> 
+          <span>{tech.name}</span>
         </div>
       ))}
     </div>
@@ -36,13 +40,18 @@ const stack = [
 <style>
   section { padding: 5rem 2rem; }
   .container { max-width: 1100px; margin: 0 auto; }
+  
   .section-tag {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
     background: var(--green-pale); color: var(--green-main);
     font-size: .78rem; font-weight: 700; letter-spacing: .08em;
     text-transform: uppercase; padding: .35rem .9rem;
     border-radius: 50px; margin-bottom: 1rem;
   }
+  .tag-icon { font-size: .95rem !important; }
+
   .section-title {
     font-family: 'Playfair Display', serif;
     font-size: clamp(1.8rem, 4vw, 2.8rem);
@@ -56,19 +65,28 @@ const stack = [
   .tech { background: var(--white); }
   .tech-header { text-align: center; margin-bottom: 3rem; }
   .tech-header .section-sub { margin: 0 auto; }
+  
   .tech-grid {
     display: flex; flex-wrap: wrap; gap: 1rem;
     justify-content: center; margin-top: 2.5rem;
   }
   .tech-chip {
-    display: flex; align-items: center; gap: .6rem;
+    display: flex; align-items: center; gap: .5rem;
     background: var(--green-mist); border: 1px solid var(--border);
     border-radius: 50px; padding: .6rem 1.2rem;
     font-size: .9rem; font-weight: 600; color: var(--green-dark);
     transition: transform .15s, box-shadow .15s;
   }
-  .tech-chip:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(46,125,50,.15); }
-  .tech-chip .emoji { font-size: 1.1rem; }
+  .tech-chip:hover { 
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 12px rgba(46,125,50,.15); 
+  }
+  
+  /* Nuevos estilos específicos para el icono de la tecnología */
+  .tech-icon { 
+    font-size: 1.15rem !important; 
+    color: var(--green-main); /* El color verde resalta sutilmente cada icono */
+  }
 
   @media (max-width: 600px) {
     section { padding: 3.5rem 1.2rem; }

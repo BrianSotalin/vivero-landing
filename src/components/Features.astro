@@ -1,25 +1,29 @@
 ---
 const features = [
-  { icon: "🛒", title: "Punto de Venta", desc: "Registra ventas con carrito de compras, selección de cliente, estado de pago (pagado, deuda, abonado) y generación de comprobante PDF." },
-  { icon: "📦", title: "Inventario de Productos", desc: "Controla plantas e insumos con categorías, precios de compra y venta. Búsqueda instantánea y edición rápida." },
-  { icon: "👥", title: "Directorio de Clientes", desc: "Gestiona clientes con nombre, teléfono y correo. Historial de compras y deudas por cliente." },
-  { icon: "📊", title: "Dashboard con Estadísticas", desc: "Visualiza ingresos totales, ventas por mes y top 5 productos más vendidos con gráficos interactivos en tiempo real." },
-  { icon: "🔐", title: "Control de Acceso por Roles", desc: "Tres niveles de acceso: Administrador, Usuario y Empleado. Cada rol ve solo lo que necesita." },
-  { icon: "📄", title: "Comprobantes en PDF", desc: "Genera y descarga el detalle de cada venta en PDF directamente desde el sistema." }
+  { icon: "point_of_sale",        title: "Punto de Venta",               desc: "Registra ventas con carrito de compras, selección de cliente, estado de pago (pagado, deuda, abonado) y generación de comprobante PDF." },
+  { icon: "inventory_2",          title: "Inventario de Productos",       desc: "Controla plantas e insumos con categorías, precios de compra y venta. Búsqueda instantánea y edición rápida." },
+  { icon: "group",                title: "Directorio de Clientes",        desc: "Gestiona clientes con nombre, teléfono y correo. Historial de compras y deudas por cliente." },
+  { icon: "insights",             title: "Dashboard con Estadísticas",    desc: "Visualiza ingresos totales, ventas por mes y top 5 productos más vendidos con gráficos interactivos en tiempo real." },
+  { icon: "admin_panel_settings", title: "Control de Acceso por Roles",   desc: "Tres niveles de acceso: Administrador, Usuario y Empleado. Cada rol ve solo lo que necesita." },
+  { icon: "picture_as_pdf",       title: "Comprobantes en PDF",           desc: "Genera y descarga el detalle de cada venta en PDF directamente desde el sistema." }
 ];
 ---
 
 <section class="features" id="caracteristicas">
   <div class="container">
     <div class="features-header fade-up">
-      <div class="section-tag">✨ Características</div>
+      <div class="section-tag">
+         <span class="material-icons tag-icon">auto_awesome</span> Características
+       </div>
       <h2 class="section-title">Todo lo que necesita tu vivero</h2>
       <p class="section-sub">Cada módulo fue diseñado pensando en las necesidades reales de un negocio de plantas.</p>
     </div>
     <div class="features-grid">
       {features.map((item) => (
         <div class="feature-card fade-up">
-          <div class="feature-icon">{item.icon}</div>
+          <div class="feature-icon">
+            <span class="material-icons">{item.icon}</span>
+          </div>
           <h3>{item.title}</h3>
           <p>{item.desc}</p>
         </div>
@@ -29,16 +33,21 @@ const features = [
 </section>
 
 <style>
-  /* Pega aquí exclusivamente los estilos pertenecientes a .features, .features-grid, .feature-card, etc. */
+
   section { padding: 5rem 2rem; }
   .container { max-width: 1100px; margin: 0 auto; }
-  .section-tag {
-    display: inline-block;
-    background: var(--green-pale); color: var(--green-main);
-    font-size: .78rem; font-weight: 700; letter-spacing: .08em;
-    text-transform: uppercase; padding: .35rem .9rem;
-    border-radius: 50px; margin-bottom: 1rem;
-  }
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  background: var(--green-pale); color: var(--green-main);
+  font-size: .78rem; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; padding: .35rem .9rem;
+  border-radius: 50px; margin-bottom: 1rem;
+}
+.tag-icon { 
+  font-size: .95rem !important; 
+}
   .section-title {
     font-family: 'Playfair Display', serif;
     font-size: clamp(1.8rem, 4vw, 2.8rem);
@@ -70,13 +79,11 @@ const features = [
     background: linear-gradient(90deg, var(--green-main), var(--accent));
   }
   .feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(46,125,50,.12); }
-  .feature-icon {
-    font-size: 2rem; margin-bottom: 1rem;
-    width: 56px; height: 56px;
-    background: var(--white); border-radius: 14px;
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 2px 8px rgba(46,125,50,.12);
-  }
+
+  .feature-icon .material-icons {
+  font-size: 2.6rem;
+  color: var(--green-main);
+}
   .feature-card h3 {
     font-family: 'Playfair Display', serif;
     font-size: 1.2rem; color: var(--green-dark);

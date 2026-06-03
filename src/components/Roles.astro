@@ -2,7 +2,7 @@
 // src/components/Roles.astro
 const roles = [
   {
-    emoji: "👑",
+    icon: "manage_accounts", // 👑 Cambiado por icono de gestión/admin
     name: "Administrador",
     desc: "Acceso completo al sistema. Gestiona usuarios, configura el negocio y ve todas las estadísticas.",
     perms: [
@@ -12,7 +12,7 @@ const roles = [
     ]
   },
   {
-    emoji: "👤",
+    icon: "person", // 👤 Cambiado por icono de usuario estándar
     name: "Usuario",
     desc: "Acceso operativo completo excepto la gestión de usuarios del sistema.",
     perms: [
@@ -22,7 +22,7 @@ const roles = [
     ]
   },
   {
-    emoji: "🧑‍💼",
+    icon: "badge", // 🧑‍💼 Cambiado por icono de credencial/empleado
     name: "Empleado",
     desc: "Acceso exclusivo al módulo de ventas. Ideal para cajeros o vendedores en el punto de venta.",
     perms: [
@@ -37,14 +37,18 @@ const roles = [
 <section class="roles" id="roles">
   <div class="container">
     <div class="roles-header fade-up">
-      <div class="section-tag">👤 Roles</div>
-      <h2 class="section-title">Cada usuario en su lugar</h2>
-      <p class="section-sub">Control granular de permisos para proteger la información sensible del negocio.</p>
+      <div class="section-tag">
+        <span class="material-icons tag-icon">groups</span> Roles
+       </div>
+       <h2 class="section-title">Cada usuario en su lugar</h2>
+       <p class="section-sub">Control granular de permisos para proteger la información sensible del negocio.</p>
     </div>
     <div class="roles-grid">
       {roles.map(role => (
         <div class="role-card fade-up">
-          <div class="role-emoji">{role.emoji}</div>
+          <div class="role-icon-wrapper">
+            <span class="material-icons main-role-icon">{role.icon}</span>
+          </div>
           <h3>{role.name}</h3>
           <p>{role.desc}</p>
           <div class="role-perms">
@@ -66,13 +70,18 @@ const roles = [
 <style>
   section { padding: 5rem 2rem; }
   .container { max-width: 1100px; margin: 0 auto; }
+  
   .section-tag {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
     background: var(--green-pale); color: var(--green-main);
     font-size: .78rem; font-weight: 700; letter-spacing: .08em;
     text-transform: uppercase; padding: .35rem .9rem;
     border-radius: 50px; margin-bottom: 1rem;
   }
+  .tag-icon { font-size: .95rem !important; }
+
   .section-title {
     font-family: 'Playfair Display', serif;
     font-size: clamp(1.8rem, 4vw, 2.8rem);
@@ -100,16 +109,34 @@ const roles = [
     transition: background .2s;
   }
   .role-card:hover { background: rgba(255,255,255,.12); }
-  .role-emoji { font-size: 2.5rem; margin-bottom: 1rem; }
+  
+  /* Estilos nuevos para los contenedores de los iconos */
+  .role-icon-wrapper {
+    background: rgba(255, 255, 255, 0.1);
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+    color: var(--accent); /* Hereda el color verde claro/limón de tu app */
+  }
+  .main-role-icon {
+    font-size: 3rem !important;
+  }
+
   .role-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: .5rem; }
   .role-card p { font-size: .9rem; color: rgba(255,255,255,.65); line-height: 1.6; margin-bottom: 1rem; }
   .role-perms { display: flex; flex-direction: column; gap: .4rem; }
+  
   .perm {
     display: flex; align-items: center; gap: .5rem;
     font-size: .82rem; color: rgba(255,255,255,.8);
   }
-  /* Manejo dinámico de colores de iconos por CSS nativo basado en el icono inyectado */
   .perm .material-icons { font-size: 1rem; }
+  
+  /* Colores dinámicos para los checks y cancels */
   .perm:has([textContent="check_circle"]) .material-icons { color: var(--accent); }
   .perm:has([textContent="cancel"]) .material-icons { color: #ef5350; }
 
