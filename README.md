@@ -43,7 +43,7 @@ Sigue estos pasos para clonar el proyecto y ejecutarlo en tu entorno de desarrol
    git clone [https://github.com/tu-usuario/vivero-la-vega-landing.git](https://github.com/tu-usuario/vivero-la-vega-landing.git)
    cd vivero-la-vega-landing
    ```
-   Instala las dependencias del proyecto:
+2. **Instala las dependencias del proyecto:**
 
  ```bash
 npm install
