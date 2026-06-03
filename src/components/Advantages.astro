@@ -12,7 +12,9 @@ const advantages = [
   <div class="container">
     <div class="advantages-inner">
       <div class="fade-up">
-        <div class="section-tag">💡 Ventajas</div>
+        <div class="section-tag">
+          <span class="material-icons tag-icon">lightbulb</span> Ventajas
+        </div>
         <h2 class="section-title">¿Por qué usar este sistema?</h2>
         <p class="section-sub">Diseñado para simplificar la operación diaria sin necesidad de conocimientos técnicos.</p>
         
@@ -31,13 +33,17 @@ const advantages = [
         </div>
       </div>
 
-      <!-- Mockup Visual -->
       <div class="advantages-visual fade-up">
         <div class="mock-header">
-          <div class="mock-dot" style="background:#ef5350"></div>
-          <div class="mock-dot" style="background:#ffca28; margin-left:6px"></div>
-          <div class="mock-dot" style="background:#66bb6a; margin-left:6px"></div>
-          <span class="mock-title">🌿 Historial de Ventas</span>
+          <div class="mock-dots">
+            <div class="mock-dot" style="background:#ef5350"></div>
+            <div class="mock-dot" style="background:#ffca28"></div>
+            <div class="mock-dot" style="background:#66bb6a"></div>
+          </div>
+<span class="mock-title">
+  <span class="material-icons mock-title-icon">point_of_sale</span>
+  Historial de Ventas
+</span>
         </div>
         <div class="mock-row">
           <span class="mock-row-label">Venta #0001 — Tarquino</span>
@@ -67,13 +73,19 @@ const advantages = [
 <style>
   section { padding: 5rem 2rem; }
   .container { max-width: 1100px; margin: 0 auto; }
+  
+  /* Ajuste para soportar el icono interno alineado verticalmente */
   .section-tag {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
     background: var(--green-pale); color: var(--green-main);
     font-size: .78rem; font-weight: 700; letter-spacing: .08em;
     text-transform: uppercase; padding: .35rem .9rem;
     border-radius: 50px; margin-bottom: 1rem;
   }
+  .tag-icon { font-size: .95rem !important; }
+
   .section-title {
     font-family: 'Playfair Display', serif;
     font-size: clamp(1.8rem, 4vw, 2.8rem);
@@ -110,12 +122,28 @@ const advantages = [
     border: 1px solid var(--border);
   }
   .mock-header {
-    display: flex; align-items: center; gap: .8rem;
+    display: flex; align-items: center; justify-content: space-between;
     padding-bottom: 1rem; border-bottom: 1px solid var(--border);
     margin-bottom: 1.5rem;
   }
+  .mock-dots { display: flex; gap: 6px; }
   .mock-dot { width: 12px; height: 12px; border-radius: 50%; }
-  .mock-title { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--green-dark); font-size: 1rem; margin-left: .3rem; }
+  
+  /* Ajustes para el título de la ventana del mockup con su icono SVG */
+  .mock-title { 
+    font-family: 'Playfair Display', serif; 
+    font-weight: 700; 
+    color: var(--green-dark); 
+    font-size: 1rem; 
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+  }
+  .mock-title-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
   .mock-row {
     display: flex; justify-content: space-between; align-items: center;
     padding: .7rem .8rem; border-radius: 8px; margin-bottom: .5rem;
