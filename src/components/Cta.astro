@@ -1,11 +1,12 @@
 ---
 // src/components/Cta.astro
+const systemUrl = import.meta.env.PUBLIC_SYSTEM_URL;
 ---
 <section class="cta-section">
   <div class="container fade-up">
     <h2>¿Listo para modernizar tu vivero?</h2>
     <p>Accede al sistema ahora mismo. Sin instalaciones, sin complicaciones.</p>
-    <a href="https://viveros-ecuador.devxsota.cloud" class="btn-white">
+    <a href={systemUrl} class="btn-white">
       <span class="material-icons">rocket_launch</span>
       Entrar al Sistema
     </a>

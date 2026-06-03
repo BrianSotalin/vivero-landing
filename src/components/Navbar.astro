@@ -1,9 +1,10 @@
 ---
 // Componente de navegación estático
+const systemUrl = import.meta.env.PUBLIC_SYSTEM_URL;
 ---
 <nav>
   <a href="#" class="nav-brand"><span>🌿</span> Vivero La Vega</a>
-  <a href="https://viveros-ecuador.devxsota.cloud" class="nav-cta">Acceder al Sistema</a>
+  <a href={systemUrl} class="nav-cta">Acceder al Sistema</a>
 </nav>
 
 <style>

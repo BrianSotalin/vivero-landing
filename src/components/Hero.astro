@@ -1,5 +1,7 @@
 ---
 // src/components/Hero.astro
+const systemUrl = import.meta.env.PUBLIC_SYSTEM_URL;
+
 const stats = [
   { number: "3", label: "Roles de usuario" },
   { number: "5", label: "Módulos de gestión" },
@@ -23,7 +25,7 @@ const stats = [
     <h1>Gestiona tu vivero<br/>con <em>tecnología</em></h1>
     <p>Plataforma web completa para el control de inventario, ventas, clientes y estadísticas de tu vivero. Simple, rápido y desde cualquier dispositivo.</p>
     <div class="hero-actions">
-      <a href="https://viveros-ecuador.devxsota.cloud" class="btn-primary">
+      <a href={systemUrl} class="btn-primary">
         <span class="material-icons">rocket_launch</span>
         Entrar al Sistema
       </a>
